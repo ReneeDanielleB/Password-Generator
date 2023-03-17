@@ -90,17 +90,64 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  const length = parseInt(prompt("How long would you like your password to be? (8-64): "));
 
+  //Prompt for character type
+  const uppercase = prompt("Please include uppercase letters");
+  const lowercase = prompt("please include lowercase letters");
+  const digits = prompt("include digits? yes/no: ").toLowerCase() === "y";
+  const symbols = prompt("include symbols? yes/no: ").toLowerCase() === "y";
+
+  //passwords returned as objects
+  return {
+    length: length,
+    uppercase: uppercase,
+    lowercase: lowercase,
+    digits: digits,
+    symbols: symbols,
+  }
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  
+  //geenerate random index btwn 0 and last index of the array
+  const randomIndex = Math.floor(Math.random() * arr.length);
 
+  //return the element
+  return arr[randomIndex];
 }
 
 // Function to generate password with user input
 function generatePassword() {
 
+  const options = getPasswordOptions();
+
+  const characterSets = {
+    uppercase: [],
+    lowercase: [],
+    digits: [],
+    symbols: [],
+  };
+
+
+  let characterSet = " ";
+  if (options.uppercase) {characterSet += characterSets.uppercase;}
+
+  if (options.lowercase) {characterSet += characterSets.lowercase;}
+
+  if (options.digits) {characterSet += characterSets.digits;}
+
+  if (options.symbols) {characterSet += characterSets.symbols;}
+
+  //password generated
+  let password = " ";
+  for (let i = 0; i < options.length; i++) {
+    const randomIndex = Math.floor(Math.random() * characterSet.length); 
+    password += characterSet[randomIndex];
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
