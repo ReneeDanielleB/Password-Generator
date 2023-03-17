@@ -95,8 +95,13 @@ function getPasswordOptions() {
   //Prompt for character type
   const uppercase = prompt("Please include uppercase letters");
   const lowercase = prompt("please include lowercase letters");
-  const digits = prompt("include digits? yes/no: ").toLowerCase() === "y";
-  const symbols = prompt("include symbols? yes/no: ").toLowerCase() === "y";
+  const digits = prompt("Would you like to include numbers? yes/no: ").toLowerCase() === "y";
+  const symbols = prompt("Would you like to include symbols? yes/no: ").toLowerCase() === "y";
+
+  if (!options.uppercase && !options.lowercase && !options.digits && !options.symbols) {
+    alert("Please select at least one character type to include in your password!");
+    return "";
+  }
 
   //passwords returned as objects
   return {
