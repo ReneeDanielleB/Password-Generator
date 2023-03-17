@@ -3,7 +3,7 @@
 This is an application used to generate a random password for users based on their responses to prompts.
 
 
-#Deployed link:
+# Deployed link: 
 https://reneedanielleb.github.io/Password-Generator/
 
 Screenshot:
